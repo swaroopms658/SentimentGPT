@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analysis Result</title>
+    <style>
+      /* Global Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+      }
+
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+        color: #2d3e50;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        color: #4caf50;
+        text-align: center;
+      }
+
+      p {
+        color: #777;
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 10px;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 1rem;
+        text-decoration: none;
+        color: #4caf50;
+        background-color: #fff;
+        padding: 10px 20px;
+        border: 2px solid #4caf50;
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      a:hover {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+
+        a {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>Sentiment Analysis Result</h2>
+
+      {% if sentiment %}
+      <h3>Sentiment: {{ sentiment.0.label }}</h3>
+      <p>Confidence Score: {{ sentiment.0.score }}</p>
+      {% else %}
+      <p>No sentiment data available.</p>
+      {% endif %}
+
+      <a href="{% url 'analyze_sentiment' %}">Go Back</a>
+    </div>
+  </body>
+</html>

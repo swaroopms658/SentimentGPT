@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment GPT</title>
+    <style>
+      /* Global Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: whitesmoke;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+      }
+
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+        color: #2d3e50;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        color: #0d110d;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      p {
+        color: #777;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      /* Form Styling */
+      form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(193, 190, 190, 0.1);
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+        border: 1px solid gold;
+        border-radius: 8px;
+        resize: vertical;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+
+      input[type="submit"] {
+        background-color: #0d0e0d;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+        transform: translateY(-2px);
+      }
+
+      input[type="submit"]:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+      }
+
+      textarea:focus {
+        outline: none;
+        box-shadow: 0 0 2px 2px #f2bc0a; /* Green glowing effect */
+        border-color: #f2bc0a; /* Subtle border color change */
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        form {
+          width: 90%;
+        }
+
+        textarea {
+          padding: 12px;
+        }
+
+        input[type="submit"] {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>SentimentGPT</h2>
+      <form action="{% url 'analyze_sentiment' %}" method="POST">
+        {% csrf_token %}
+        <textarea
+          name="experience"
+          rows="5"
+          placeholder="Share your experience here..."
+        ></textarea>
+        <input type="submit" value="Submit" />
+      </form>
+
+      {% if sentiment %}
+      <h3>Sentiment: {{ sentiment.0.label }}</h3>
+      <p>Score: {{ sentiment.0.score }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
