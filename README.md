@@ -95,7 +95,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 For any questions or further information, please reach out at:
 
-- Email: [your-email@example.com](mailto:your-email@example.com)
+- Email: [your-email@example.com](mailto:swaroopms658@gmail.com)
 - GitHub: [swaroopms658](https://github.com/swaroopms658)
 
 ---
